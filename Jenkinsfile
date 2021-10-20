@@ -21,15 +21,16 @@ pipeline {
                 }
             }
         
-        
-        
         stage('Plan') {
-            steps {
-                script {
-                    currentBuild.displayName = params.version
+            when {
+                not {
+                    equals expected: true, actual: params.destroy
                 }
-                sh  'terraform init -input=false'
-                sh "terraform plan -input=false -out tfplan"
+            }
+            
+            steps {
+                sh 'terraform init -input=false'
+                sh "terraform plan -input=false -out tfplan "
                 sh 'terraform show -no-color tfplan > tfplan.txt'
             }
         }
