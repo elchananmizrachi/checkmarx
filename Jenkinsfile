@@ -10,7 +10,19 @@ pipeline {
     }
 
     stages {
-
+        stage('Get files from Git') {
+            steps {
+                 script{
+                        dir("terraform")
+                        {
+                            git "https://github.com/elchananmizrachi/checkmarx.git"
+                        }
+                    }
+                }
+            }
+        
+        
+        
         stage('Plan') {
             steps {
                 script {
