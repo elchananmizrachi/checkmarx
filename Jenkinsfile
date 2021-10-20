@@ -1,6 +1,5 @@
 pipeline {
-     agent {
-        label "master"
+    agent none
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
@@ -17,11 +16,10 @@ pipeline {
                 script {
                     currentBuild.displayName = params.version
                 }
-                sh PATH=/usr/local/bin/terraform 'terraform init -input=false'
+                sh  'terraform init -input=false'
                 sh "terraform plan -input=false -out tfplan"
                 sh 'terraform show -no-color tfplan > tfplan.txt'
             }
         }
-   }
- }
+    }
 }
