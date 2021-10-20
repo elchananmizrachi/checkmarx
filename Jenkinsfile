@@ -10,6 +10,11 @@ pipeline {
     }
 
     stages {
+        stage('Git Checkout'){
+            steps{
+                git branch: 'main', credentialsId: 'git', url: 'https://github.com/elchananmizrachi/checkmarx.git/'
+            }
+        }
         stage('Plan') {
             steps {
                 script {
