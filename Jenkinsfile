@@ -1,8 +1,6 @@
-def AGENT_LABEL = null
-
 pipeline {
      agent {
-        label "${AGENT_LABEL}"
+        label "master"
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
