@@ -16,7 +16,7 @@ pipeline {
                 script {
                     currentBuild.displayName = params.version
                 }
-                sh "aws ec2 describe-security-groups"
+                sh /usr/local/bin/aws "aws ec2 describe-security-groups"
             }
         }
    }
