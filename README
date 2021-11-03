@@ -1,0 +1,7 @@
+
+This repo atendend to exercise a simple deployment of:
+
+      1. a JenkinsFile which uses docker/k8s as its agents (nodes, slaves).
+      2.  pipeline that deploy a simple EKS server (use TF Modules)
+      3. Deploy a Nginx webserver on the K8s cluster
+
